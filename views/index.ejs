@@ -1,0 +1,44 @@
+<% include ../views/partials/header.ejs %>
+
+<div class="container">
+  <h1 style="text-align: center;">This is the index page</h1>
+    <div style="width: 30%; margin: 30px auto;">
+    <div class="row">
+      <div class="form">
+        <form action="/students" method="post">
+          <div class="form group">
+            <input class="form-control" type="text" name="firstName" placeholder="First Name">
+          </div>
+
+          <!-- <div class="form group">
+            <input class="form-control" type="text" name="lastName" placeholder="Last Name">
+          </div>
+          <div class="form group">
+            <input class="form-control" type="text" name="parent1FirstName" placeholder="Parent 1 First Name">
+          </div>
+          <div class="form group">
+            <input class="form-control" type="text" name="parent1LastName" placeholder="Parent 1 Last Name">
+          </div>
+          <div class="form group">
+            <input class="form-control" type="text" name="parent2FirstName" placeholder="Parent 2 First Name">
+          </div>
+          <div class="form group">
+            <input class="form-control" type="text" name="parent2LastName" placeholder="Parent 2 Last Name">
+          </div>
+          <div class="form group">
+            <input class="form-control" type="text" name="age" placeholder="Age">
+          </div>
+          <div class="form group">
+            <input class="form-control" type="text" name="comments" placeholder="Comments">
+          </div> -->
+
+          <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../views/partials/footer.ejs %>
