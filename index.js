@@ -2,49 +2,39 @@ const express = require("express"),
   app = express(),
   mongodb = require("mongodb"),
   ejs = require("ejs"),
+  cookieSession = require("cookie-session"),
+  passport = require("passport"),
   keys = require("./config/keys"),
   request = require("request"),
   bodyParser = require("body-parser"),
   Student = require("./models/Student"),
   mongoose = require("mongoose");
 
-app.set("view-engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
-require("./config/keys");
-require("./models/Student");
-// require("./models/requests");
-// require("./models/crimeRequest");
-
 mongoose.connect(
   keys.mongoURI,
   { useNewUrlParser: true }
 );
 
-app.get("/", function(req, res) {
-  res.render("index.ejs");
-});
+app.set("view-engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.get("/students", function(req, res) {
-  Student.find({}, function(err, students1) {
-    if (err) {
-      console.log("Something went wrong");
-    } else {
-      res.render("students.ejs", { student: student });
-    }
-  });
-  res.render("students.ejs");
-});
-
-app.post("/students", function(req, res) {
-  // create student
-  Student.create(req.body.student, function(err, newStudent) {
-    if (err) {
-      res.render("/");
-    } else {
-      res.redirect("/students");
-    }
-  });
-});
+require("./models/User");
+require("./services/passport");
+require("./routes/authRoutes");
+require("./config/keys");
+require("./models/Student", Student.Student), require("./routes/authRoutes");
+require("./routes/authRoutes")(app);
+require("./routes/navRoutes")(app);
+// require("./models/requests");
+// require("./models/crimeRequest");
 
 app.listen(5000);
 console.log("Server is running");
