@@ -1,6 +1,7 @@
 const passport = require("passport"),
   GoogleStrategy = require("passport-google-oauth20"),
   LocalStrategy = require("passport-local"),
+  OktaStrategy = require("passport-okta-oauth").Strategy,
   mongoose = require("mongoose"),
   keys = require("../config/keys");
 
@@ -46,3 +47,25 @@ passport.use(
     }
   )
 );
+
+// passport.use(
+//   new OktaStrategy(
+//     {
+//       audience: keys.baseURL,
+//       clientID: keys.clientID,
+//       clientSecret: keys.clientSECRET,
+//       scope: ["openid", "email", "profile"],
+//       response_type: "code",
+//       callbackURL: "http://localhost:5000/auth/okta/callback"
+//     },
+//     function(accessToken, refreshToken, profile, done) {
+//       return profile;
+//     }
+//   )
+// );
+//
+// // passport.use(
+// //   LocalStrategy({
+// //
+// //   })
+// // )

@@ -4,10 +4,12 @@ const express = require("express"),
   ejs = require("ejs"),
   cookieSession = require("cookie-session"),
   passport = require("passport"),
+  okta = require("@okta/okta-sdk-nodejs"),
   keys = require("./config/keys"),
   request = require("request"),
   bodyParser = require("body-parser"),
   Student = require("./models/Student"),
+  NewVisitor = require("./models/newVisitor"),
   mongoose = require("mongoose");
 
 mongoose.connect(
@@ -32,6 +34,7 @@ require("./routes/authRoutes");
 require("./config/keys");
 require("./models/Student", Student.Student), require("./routes/authRoutes");
 require("./routes/authRoutes")(app);
+require("./routes/oktaAuth");
 require("./routes/navRoutes")(app);
 // require("./models/requests");
 // require("./models/crimeRequest");
