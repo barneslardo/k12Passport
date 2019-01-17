@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-var newVisitorSchema = new mongoose.Schema({
-  name: {
-    firstName: String,
-    lastName: String,
-    driversLicense: String
-  }
+var newVisitorSchema = new Schema({
+  firstName: String,
+  lastName: String,
+  driversLicense: String
 });
 
-var NewVisitor = mongoose.model("NewVisitor", newVisitorSchema);
-module.exports = NewVisitor;
+mongoose.model("NewVisitor", newVisitorSchema);
