@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
-class VisitorForm extends React.Component {
+class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: "" };
@@ -16,11 +17,11 @@ class VisitorForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("New Visitor Submitted: " + this.state.value);
+    // alert("New Visitor Submitted: " + this.state.value);
     console.log(this.state.value);
     event.preventDefault();
     axios
-      .post("/api/newVisitor", {
+      .post("/searchResults", {
         visitorName: this.state.value
       })
       .then(response => {
@@ -48,4 +49,4 @@ class VisitorForm extends React.Component {
   }
 }
 
-export default VisitorForm;
+export default SearchForm;
