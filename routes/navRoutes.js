@@ -65,15 +65,15 @@ module.exports = app => {
     var query = req.query.search;
     var key = "&apikey=2f2d6110";
     var url = "http://www.omdbapi.com/?t=" + query + key;
-    console.log(query);
-    console.log(url);
+    // console.log(query);
+    // console.log(url);
     request(url, function(error, response, body) {
       if (!error && response.statusCode == 200) {
         var data = JSON.parse(body);
         if (data.Response == "False") {
           res.send("That movie doesn't exist");
         } else {
-          console.log(data);
+          // console.log(data);
           res.render("searchResults.ejs", { data: data });
         }
       }

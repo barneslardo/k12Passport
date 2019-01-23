@@ -27,7 +27,7 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({
-        googleId: profile.id
+        googleId: profile.userID
       });
 
       if (existingUser) {
@@ -66,7 +66,7 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({
-        profileId: profile.id
+        userID: profile.id
       });
       console.log(profile.id);
       console.log(profile.displayName);

@@ -18,6 +18,7 @@ module.exports = app => {
     (req, res) => {
       res.redirect("/searchForm");
       console.log(req.user);
+      console.log(req.user.userID);
     }
   );
 

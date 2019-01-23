@@ -1,4 +1,12 @@
+<% include ./partials/header.ejs %>
+
+<center>
 <h2>Search Results</h2>
 <h1><%= data.Title %></h1>
-<p><%= data.Plot %></p>
+<div class="my-4">
+  <p><%= data.Plot %></p>
+</div>
 <a class="my-5" href="/searchForm">Do another search</a>
+</center>
+
+<% include ./partials/footer.ejs %>
