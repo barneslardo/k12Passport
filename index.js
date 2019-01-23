@@ -1,5 +1,6 @@
 const express = require("express"),
   app = express(),
+  OidcStrategy = require("passport-openidconnect").Strategy,
   mongodb = require("mongodb"),
   ejs = require("ejs"),
   cookieSession = require("cookie-session"),
@@ -16,7 +17,7 @@ mongoose.connect(
   keys.mongoURI,
   { useNewUrlParser: true }
 );
-
+app.use(express.static("public"));
 app.set("view-engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
@@ -32,7 +33,7 @@ require("./models/User");
 require("./services/passport");
 require("./routes/authRoutes");
 require("./config/keys");
-require("./models/Student", Student.Student), require("./routes/authRoutes");
+// require("./models/Student", Student.Student), require("./routes/authRoutes");
 require("./routes/authRoutes")(app);
 require("./routes/oktaAuth");
 require("./routes/navRoutes")(app);

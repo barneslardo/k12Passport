@@ -1,5 +1,6 @@
 const express = require("express"),
   passport = require("passport"),
+  OidcStrategy = require("passport-openidconnect").Strategy,
   keys = require("../config/keys"),
   app = express();
 
@@ -15,14 +16,25 @@ module.exports = app => {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      res.redirect("/surveys");
+      res.redirect("/searchForm");
       console.log(req.user);
     }
   );
 
-  app.get("/auth/okta/callback", passport.authenticate("okta"), (req, res) => {
-    res.redirect("/surveys");
-  });
+  app.get(
+    "/auth/oktaOIDC",
+    passport.authenticate("oidc", {
+      scope: ["profile", "email"]
+    })
+  );
+
+  app.get(
+    "/auth/oktaOIDC/callback",
+    passport.authenticate("oidc"),
+    (req, res) => {
+      res.redirect("/searchForm");
+    }
+  );
 
   app.get("/api/logout", (req, res) => {
     req.logout();

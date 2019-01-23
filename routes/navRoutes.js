@@ -7,6 +7,7 @@ const express = require("express"),
   request = require("request"),
   app = express();
 
+const User = mongoose.model("users");
 const Visitor = mongoose.model("NewVisitor");
 // require("../models/newVisitor");
 var newVisitorSchema = new Schema({
@@ -26,32 +27,10 @@ module.exports = app => {
     res.render("students.ejs");
   });
 
-  // app.post("/students", function(req, res) {
-  //   // create student
-  //   Student.create(req.body.student, function(err, newStudent) {
-  //     if (err) {
-  //       res.render("/");
-  //     } else {
-  //       res.redirect("/students");
-  //     }
-  //   });
-  // });
+  app.get("/auth", function(req, res) {
+    res.render("auth.ejs");
+  });
 
-  //   app.post("/api/newVisitor", function(req, res) {
-  //     // Check Name
-  //     VisitorCheck.create(req.body.visitor, function(err, newVisitor) {
-  //       const checkVisitor = req.body.checkVisitor;
-  //       console.log("Visitor to check is ", checkVisitor);
-  //     });
-  //   });
-  //
-  //   app.get("/api/newVisitor", function(req, res) {
-  //     res.send(req.body.checkVisitor);
-  //   });
-  //
-  //   //   app.get("*", function(req, res) {
-  //   //     res.render("catch.ejs");
-  //   //   });
   app.get("/visitor/new", function(req, res) {
     res.render("newVisitor.ejs");
   });
@@ -101,5 +80,13 @@ module.exports = app => {
     });
   });
 
-  app.get("/");
+  app.get("/users", function(req, res) {
+    User.find({}, function(err, users) {
+      if (err) {
+        console.log("Error");
+      } else {
+        res.render("users.ejs", { users: users });
+      }
+    });
+  });
 };

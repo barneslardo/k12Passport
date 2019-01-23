@@ -1,18 +1,11 @@
 <% include ../views/partials/header.ejs %>
 <div class="container">
-  <div class="nav">
-    <a href="/auth/google/">Log In</a>
+  <div class="navbar navbar-dark bg-dark">
+    <a class="float-lg-right" href="/auth">Log In</a>
   </div>
 </div>
+<center><h1 class="my-5">K12 Passport</h1></center>
 
-<div class="">
-  <div class="">
-    <form action="/students" method="POST">
-      <input type="text" name="student[firstName]" placeholder="first">
-      <input type="text" name="student[lastName]" placeholder="last">
-      <input type="submit">
-    </form>
-  </div>
-</div>
+
 
 <% include ../views/partials/footer.ejs %>

@@ -1,0 +1,59 @@
+<% include ./partials/header %>
+<center><h1 class="mt-5 k12">K12 Passport</h1></center>
+<div id="widget-container"></div>
+
+<script>
+  var signIn = new OktaSignIn({
+    baseUrl: 'https://bigfootwebservice.okta.com',
+    clientId: '0oa7eeoooNzlrg3Ar356',
+  redirectUri: 'http://localhost:5000/auth/oktaOIDC/callback',
+  authParams: {
+    issuer: 'https://bigfootwebservice.okta.com/oauth2/default',
+    responseType: ['id_token','token'],
+    display: 'page'
+  }
+  });
+
+  if (!signIn.token.hasTokensInUrl()) {
+  signIn.renderEl({el: '#widget-container'},
+    function() {},
+    function(err) { console.err(err) });
+}
+
+else {
+  signIn.token.parseTokensFromUrl(
+    function success(res) {
+      // Add the token to tokenManager to automatically renew the token when needed
+      signIn.tokenManager.add('id_token', res[0]);
+      signIn.tokenManager.add('access_token', res[1]);
+    },
+    function error(err) {
+      console.log('handle error', err);
+    }
+  );
+}
+  signIn.renderEl({
+    el: '#widget-container'
+  }, function success(res) {
+    if (res.status === 'SUCCESS') {
+      console.log('Do something with this sessionToken', res.session.token);
+    } else {
+    // The user can be in another authentication state that requires further action.
+    // For more information about these states, see:
+    //   https://github.com/okta/okta-signin-widget#rendereloptions-success-error
+    }
+  });
+</script>
+<!-- <center>
+  <div class="my-5 w-25">
+    <div class="w-25 p-3" style="background-color: #eee;">
+      <div style="height: 100px; background-color: rgba(255,0,0,0.1);">
+        <a href=""><img class="" src="okta.png" /></a>
+      </div>
+    </div>
+  </div>
+</center> -->
+
+
+
+<% include ./partials/footer %>

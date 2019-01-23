@@ -1,0 +1,12 @@
+<div class="ui main text container">
+    <div class="ui huge header">Users</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% users.forEach(function(user){ %>
+              <h2>*****************************</h2>
+                <h3><%= user.userID %></h3>
+                <h1><%= user.userNameOkta || user.userNameGoogle %></h1>
+            <% }) %>
+        </div>
+    </div>
+</div>
