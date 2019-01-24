@@ -1,12 +1,12 @@
-<div class="ui main text container">
-    <div class="ui huge header">Users</div>
-    <div class="ui top attached segment">
-        <div class="ui divided items">
-            <% users.forEach(function(user){ %>
-              <h2>*****************************</h2>
-                <h3><%= user.userID %></h3>
-                <h1><%= user.userNameOkta || user.userNameGoogle %></h1>
-            <% }) %>
-        </div>
+<% include ./partials/header.ejs %>
+  <div class="container">
+    <div class="jumbotron bg-dark my-5">
+      <h1 class="display-1 text-info">Users</h1>
+      <% users.forEach(function(user){ %>
+        <h2 class="text-secondary">*****************************</h2>
+        <h3 class="text-light"><%= user.userID %></h3>
+        <h1 class="text-info"><%= user.userNameOkta || user.userNameGoogle %></h1>
+      <% }) %>
     </div>
-</div>
+  </div>
+<% include ./partials/footer.ejs %>

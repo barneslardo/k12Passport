@@ -1,12 +1,16 @@
 <% include ./partials/header.ejs %>
 
 <center>
-<h2>Search Results</h2>
-<h1><%= data.Title %></h1>
-<div class="my-4">
-  <p><%= data.Plot %></p>
-</div>
-<a class="my-5" href="/searchForm">Do another search</a>
+  <div class="jumbotron bg-dark my-5">
+    <h2 class="display-2 text-info">Search Results</h2>
+    <div class="bg-light">
+      <h1 class="py-3"><%= data.Title %></h1>
+  <div class="my-4">
+    <p class="pb-4"><%= data.Plot %></p>
+  </div>
+  </div>
+  <a class="my-5" href="/searchForm">Do another search</a>
 </center>
+</div>
 
 <% include ./partials/footer.ejs %>

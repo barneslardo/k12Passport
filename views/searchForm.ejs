@@ -1,13 +1,13 @@
 <% include ./partials/header.ejs %>
-<div class="my-5">
-<center><h1>Search For a Movie</h1></center>
-</div>
+<div class="jumbotron bg-dark my-5">
+<center><h1 class="display-2 my-3 text-info">Search For a Movie</h1></center>
+
 
 <center>
-  <form class="" action="/searchResults" method="GET">
+  <form class="my-5" action="/searchResults" method="GET">
     <input type="text" name="search" value="" placeholder="Search Term">
     <input type="submit">
   </form>
 </center>
-
+</div>
 <% include ./partials/footer.ejs %>

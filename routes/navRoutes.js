@@ -5,7 +5,10 @@ const express = require("express"),
   expressSanitizer = require("express-sanitizer"),
   { Schema } = mongoose,
   request = require("request"),
+  middleware = require("../middleware"),
   app = express();
+
+const middlewareObj = {};
 
 const User = mongoose.model("users");
 const Visitor = mongoose.model("NewVisitor");
@@ -57,11 +60,11 @@ module.exports = app => {
     });
   });
 
-  app.get("/searchForm", function(req, res) {
+  app.get("/searchForm", middleware.isLoggedIn, function(req, res) {
     res.render("searchForm.ejs");
   });
 
-  app.get("/searchResults", function(req, res) {
+  app.get("/searchResults", middleware.isLoggedIn, function(req, res) {
     var query = req.query.search;
     var key = "&apikey=2f2d6110";
     var url = "http://www.omdbapi.com/?t=" + query + key;
@@ -80,7 +83,7 @@ module.exports = app => {
     });
   });
 
-  app.get("/users", function(req, res) {
+  app.get("/users", middleware.isLoggedIn, function(req, res) {
     User.find({}, function(err, users) {
       if (err) {
         console.log("Error");
