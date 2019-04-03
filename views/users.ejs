@@ -5,7 +5,7 @@
       <% users.forEach(function(user){ %>
         <h2 class="text-secondary">*****************************</h2>
         <h3 class="text-light"><%= user.userID %></h3>
-        <h1 class="text-info"><%= user.userNameOkta || user.userNameGoogle %></h1>
+        <h1 class="text-info"><%= user.userNameOkta || user.userNameGoogle[0].firstName %></h1>
       <% }) %>
     </div>
   </div>

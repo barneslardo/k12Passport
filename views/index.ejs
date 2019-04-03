@@ -1,7 +1,7 @@
 <% include ../views/partials/header.ejs %>
 <center>
   <div class="container">
-    <div class="jumbotron">
+    <!-- <div class="jumbotron">
       <h1 class="display-1 text-info"><strong>K12 Passport</strong></h1>
     </div>
     <div class="bg-dark p4">
@@ -11,7 +11,29 @@
         <br>
         <a href="/auth/google"><img src="google.png" width="400" height="150" /></a>
       </div>
-    </div>
+    </div> -->
+    <div id="widget-container"></div>
+
+<script>
+  var signIn = new OktaSignIn({
+    baseUrl: 'https://bigfootwebservice.okta.com',
+    logo: "https://raw.githubusercontent.com/barneslardo/fun_app/master/client/public/Bigfoot250.png",
+    features: {
+      registration: true
+}});
+  signIn.renderEl({
+    el: '#widget-container'
+  }, function success(res) {
+    if (res.status === 'SUCCESS') {
+      res.session.setCookieAndRedirect('http://localhost:5000/auth/oktaOIDC/callback');
+    } else {
+      console.log("Something went wrong");
+    // The user can be in another authentication state that requires further action.
+    // For more information about these states, see:
+    //   https://github.com/okta/okta-signin-widget#rendereloptions-success-error
+    }
+  });
+</script>
   </div>
 </center>
 
