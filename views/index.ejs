@@ -25,7 +25,7 @@
     el: '#widget-container'
   }, function success(res) {
     if (res.status === 'SUCCESS') {
-      res.session.setCookieAndRedirect('http://localhost:5000/auth/oktaOIDC/callback');
+      res.session.setCookieAndRedirect('https://dry-inlet-84045.herokuapp.com/auth/oktaOIDC/callback');
     } else {
       console.log("Something went wrong");
     // The user can be in another authentication state that requires further action.
