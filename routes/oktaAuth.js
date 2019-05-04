@@ -5,7 +5,7 @@ const express = require("express"),
   okta = require("@okta/okta-sdk-nodejs");
 
 const client = new okta.Client({
-  orgUrl: "https://bigfootwebservice.okta.com/",
+  orgUrl: "https://skylarbarnespreoktapreview.com/",
   token: keys.oktaToken
 });
 
