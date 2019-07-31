@@ -9,5 +9,6 @@ module.exports = {
   clientID: "0oakk7tz4fQZRyYxM0h7",
   clientSECRET: "SQ9Z1ua7K9_8d-AbQWsln_SWOzRhKDU3ae5af1R0",
   callbackURL: "http://localhost:5000/auth/oktaOIDC/callback",
-  scope: "openid profile"
+  scope: "openid profile",
+  ciamToken: "00Bdgf0kRuPeu-eckEreajDOqoky0ynBDHGdVapVCf"
 };

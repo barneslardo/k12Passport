@@ -1,0 +1,45 @@
+<% include ./partials/header.ejs %>
+<div class="jumbotron bg-dark my-5">
+<center><h1 class="display-2 my-3 text-info">New Portal (Admin)</h1></center>
+
+<center>
+  <div class="container">
+    <!-- <div class="jumbotron">
+      <h1 class="display-1 text-info"><strong>K12 Passport</strong></h1>
+    </div>
+    <div class="bg-dark p4">
+      <div class="bg-light p3">
+        <h1 class="display-4 text-muted">Login with</h1>
+        <a href="/auth/oktaOIDC"><img src="okta1000.jpg" width="400" height="200" /></a>
+        <br>
+        <a href="/auth/google"><img src="google.png" width="400" height="150" /></a>
+      </div>
+    </div> -->
+    <div id="widget-container"></div>
+
+<script>
+  var signIn = new OktaSignIn({
+    baseUrl: 'https://skylarbarnespre.oktapreview.com',
+    logo: "https://raw.githubusercontent.com/barneslardo/fun_app/master/client/public/Bigfoot250.png",
+    features: {
+      registration: true
+}});
+  signIn.renderEl({
+    el: '#widget-container'
+  }, function success(res) {
+    if (res.status === 'SUCCESS') {
+      res.session.setCookieAndRedirect('http://localhost:5000/auth/oktaOIDC/callback');
+    } else {
+      console.log("Something went wrong");
+    // The user can be in another authentication state that requires further action.
+    // For more information about these states, see:
+    //   https://github.com/okta/okta-signin-widget#rendereloptions-success-error
+    }
+  });
+</script>
+  </div>
+</center>
+
+
+</div>
+<% include ./partials/footer.ejs %>

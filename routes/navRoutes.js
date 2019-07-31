@@ -92,4 +92,18 @@ module.exports = app => {
       }
     });
   });
+
+  app.get("/users2", middleware.isLoggedIn, function(req, res) {
+    User.find({}, function(err, users) {
+      if (err) {
+        console.log("Error");
+      } else {
+        res.render("users2.ejs", { users: users });
+      }
+    });
+  });
+
+  app.get("/new", function(req, res) {
+    res.render("new.ejs");
+  });
 };

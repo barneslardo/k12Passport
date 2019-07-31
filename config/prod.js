@@ -8,5 +8,6 @@ module.exports = {
   clientID: process.env.CLIENT_ID,
   clientSECRET: process.env.CLIENT_SECRET,
   callbackURL: process.env.CALLBACK_URL,
-  scope: process.env.SCOPE
+  scope: process.env.SCOPE,
+  ciamToken: process.env.CIAMTOKEN
 };
