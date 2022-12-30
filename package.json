@@ -12,7 +12,7 @@
   "author": "Skylar Barnes",
   "license": "ISC",
   "dependencies": {
-    "@okta/okta-sdk-nodejs": "^1.2.0",
+    "@okta/okta-sdk-nodejs": "^6.6.0",
     "@okta/okta-signin-widget": "^2.18.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
